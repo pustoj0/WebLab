@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+  {% for cat, msg in get_flashed_messages(True) %}
+<ul class="list-group">
+    <li class="list-group-item list-group-item-{{cat}}">{{msg}}</li>
+</ul>
+{%endfor %}
+
+      <body>
+      {% if  title  %}
+    {{title}}
+    {% else %}
+    microblog
+    {% endif %}
+
+    <h1>Hi, {{cur_user}}!</h1>
+    {% for post in posts %}
+<h3>{{'                '}}{{post.title}}</h3>  <b>{{post.content}}</b><b> <br>/Posted by user: {{post.author.username}} on {{post.date_posted.strftime('%d.%m.%Y')}}/</br></p>
+    {% endfor %}
+  </body>
+
+{% endblock %}
